@@ -49,9 +49,7 @@ sudo mysql
 Set the root password (local development only):
 
 ```sql
-ALTER USER 'root'@'localhost'
-IDENTIFIED WITH mysql_native_password
-BY 'secret';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
 ```
 
 Run the secure installation script:
