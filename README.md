@@ -1,8 +1,12 @@
 # PHP-FPM + Apache + MySQL Setup
 
-install and configure PHP-FPM with Apache and MySQL on debian for local development.
+Install and configure PHP-FPM with Apache and MySQL on Debian for local development.
 
-> ⚠️ It is highly recommended that you do not use these instructions on a production server.
+> ⚠️ **Warning**
+>  
+> It is highly recommended that you do **NOT** use these instructions on a production server.
+
+---
 
 ## 📑 Index
 
@@ -11,150 +15,141 @@ install and configure PHP-FPM with Apache and MySQL on debian for local developm
     - [PHP Extensions](#php-extensions)
     - [Install All PHP Requirements](#install-all-php-requirements)
   - [MySQL Database](#mysql-database)
-    - [Install MySQL](#install-mysql)
-    - [Set Root Password](#set-root-password)
-    - [Secure MySQL Installation](#secure-mysql-installation)
   - [Apache Server Installation](#apache-server-installation)
-    - [Disable mod_php](#disable-mod_php)
+    - [Disable mod_php](#disable-mod-php)
     - [Enable Required Apache Modules](#enable-required-apache-modules)
     - [Enable PHP-FPM Configuration](#enable-php-fpm-configuration)
     - [Restart Apache](#restart-apache)
 
-## Server Requirements
+---
 
-The Laravel framework has a few system requirements. You should 
-ensure that your web server has the following minimum PHP version and 
-extensions:
+## Server Requirements
 
-**[Ctype PHP Extension]([PHP: Ctype - Manual](https://www.php.net/manual/en/book.ctype.php))** : This extension is enabled by default.
+The Laravel framework has a few system requirements.  
+Ensure that your server has the required PHP version and extensions installed.
 
-**[cURL PHP Extension]([PHP: cURL - Manual](https://www.php.net/manual/en/book.curl.php))**
+### PHP Extensions
 
+**Ctype** – enabled by default  
+
+**cURL**
 ```bash
-apt install php-curl
+sudo apt install php-curl
 ```
 
-**[DOM PHP Extension]([PHP: DOM - Manual](https://www.php.net/manual/en/book.dom.php))** : This extension is enabled by default.
+**DOM** – enabled by default  
 
-**[Fileinfo PHP Extension]([PHP: Fileinfo - Manual](https://www.php.net/manual/en/book.fileinfo.php))** : This extension is enabled by default.
+**Fileinfo** – enabled by default  
 
-**[Filter PHP Extension]([PHP: Filter - Manual](https://www.php.net/manual/en/book.filter.php))** : This extension is enabled by default.
+**Filter** – enabled by default  
 
-**[Hash PHP Extension]([PHP: Hash - Manual](https://www.php.net/manual/en/book.hash.php))** : The Hash extension is a core PHP extension, so it is always enabled.
+**Hash** – enabled by default  
 
-**[Mbstring PHP Extension]([PHP: Installation - Manual](https://www.php.net/manual/en/mbstring.installation.php))** : `mbstring` is a non-default extension. This means it
- is not enabled by default. You must explicitly enable the module with
- the `configure` option.
-
+**Mbstring**
 ```bash
-apt install php-mbstring
+sudo apt install php-mbstring
 ```
 
-**[OpenSSL PHP Extension]([PHP: OpenSSL - Manual](https://www.php.net/manual/en/book.openssl.php) )** : To use PHP's OpenSSL support you must also compile PHP **--with-openssl**.
+**OpenSSL** – enabled by default  
 
-**[PCRE PHP Extension]([PHP: PCRE - Manual](https://www.php.net/manual/en/book.pcre.php))** : The PCRE extension is a core PHP extension, so it is always enabled. By default, this extension is compiled using the bundled PCRE library.
+**PCRE** – enabled by default  
 
-**[PDO PHP Extension]([PHP: PDO - Manual](https://www.php.net/manual/en/book.pdo.php))** : enabled by php-mysql
-
+**PDO (MySQL)**
 ```bash
-apt install php-mysql
+sudo apt install php-mysql
 ```
 
-**[Session PHP Extension]([PHP: Session Extensions - Manual](https://www.php.net/manual/en/refs.basic.session.php))** : This extension is enabled by default.
+**Session** – enabled by default  
 
-**[Tokenizer PHP Extension]([PHP: Tokenizer - Manual](https://www.php.net/manual/en/book.tokenizer.php))** : This extension is enabled by default.
+**Tokenizer** – enabled by default  
 
-**[XML PHP Extension]([PHP: XML Parser - Manual](https://www.php.net/manual/en/book.xml.php))** : This extension is enabled by default. if missing you can install it using this command:
-
+**XML**
 ```bash
-apt install php-xml
+sudo apt install php-xml
 ```
 
-**[BCMath PHP Extension (optional) ]([PHP: BC Math - Manual](https://www.php.net/manual/en/book.bc.php))** : For arbitrary precision mathematics PHP offers BCMath which
- supports numbers of any size and precision up to `2147483647`decimal digits,
- if there is sufficient memory, represented as strings.
-
+**BCMath (optional)**
 ```bash
-apt install php-bcmath
+sudo apt install php-bcmath
 ```
 
-**[FastCGI Process Manager (FPM)]([PHP: FastCGI Process Manager (FPM) - Manual](https://www.php.net/manual/en/install.fpm.php))** :
-
+**FastCGI Process Manager (FPM)**
 ```bash
-apt install php-fpm
+sudo apt install php-fpm
 ```
 
-**[Zip PHP Extension]([PHP: Zip - Manual](https://www.php.net/manual/en/book.zip.php))** :
-
+**Zip**
 ```bash
-apt install php-zip
+sudo apt install php-zip
 ```
 
-### Conclusion
+---
 
-This command installs PHP and several PHP extensions on a Linux system 
-using the apt package manager. It includes core PHP functionality and 
-additional modules like support for MySQL databases, XML processing, 
-cURL requests, ZIP files, and more. The -y flag automatically confirms 
-the installation without asking for permission.
+### Install All PHP Requirements
 
 ```bash
 sudo apt install php php-fpm php-mbstring php-xml php-mysql php-curl php-zip php-bcmath -y
 ```
 
-## MySQL Database
+---
 
- install MySQL using the APT package repository:
+## MySQL Database
+
+Install MySQL using APT:
 
 ```bash
 sudo apt install mysql-server
 ```
 
-Login via socket:
+Login via socket authentication:
 
 ```bash
 sudo mysql
 ```
 
-Set the root password:
+Set the root password (local development only):
 
-```bash
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
+```sql
+ALTER USER 'root'@'localhost'
+IDENTIFIED WITH mysql_native_password
+BY 'secret';
 ```
 
-Running the secure script:
+Run the secure installation script:
 
 ```bash
 sudo mysql_secure_installation
 ```
 
-## Apache Server Installation
+---
 
-This command installs the Apache web server software on a Linux system using the apt package manager:
+## Apache Server Installation
+
+Install Apache:
 
 ```bash
 sudo apt install apache2 -y
 ```
 
-Make sure mod_php is disabled:
+### Disable mod_php
 
 ```bash
 sudo a2dismod php8.3
 ```
 
-Enable required Apache modules:
+### Enable Required Apache Modules
 
 ```bash
 sudo a2enmod proxy_fcgi setenvif
 ```
 
-Enable PHP-FPM config:
+### Enable PHP-FPM Configuration
 
 ```bash
 sudo a2enconf php8.3-fpm
 ```
 
-Restart apache
+### Restart Apache
 
 ```bash
 sudo systemctl restart apache2
