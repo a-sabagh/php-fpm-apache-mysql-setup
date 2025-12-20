@@ -29,9 +29,33 @@ Ensure that your server has the required PHP version and extensions installed.
 ```bash
 sudo apt install php php-fpm php-mbstring php-xml php-mysql php-curl php-zip php-bcmath -y
 ```
+## Download and Install Composer Globally
 
+- Download the installer to the current directory
+- Verify the installer SHA-384
+- Run the installer
+- Remove the installer
+- Put the composer.phar into a directory on your PATH
+
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'c8b085408188070d5f52bcfe4ecfbee5f727afa458b2573b8eaaf77b3419b0bf2768dc67c86944da1544f06fa544fd47') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+sudo mv composer.phar /usr/local/bin/composer
+```
 ---
+## Install Laravel Installer
 
+```bash
+composer global require laravel/installer
+```
+Make sure composer path has been added to your global path
+
+```bash
+export PATH="~/.config/composer/vendor/bin:$PATH"
+```
+---
 ## MySQL Database
 
 Install MySQL using APT:
