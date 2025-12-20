@@ -149,6 +149,12 @@ Generate sample Laravel virtual host `laravel.exercise.conf`
 </VirtualHost>
 ```
 
+### Update Hosts
+
+```bash
+127.0.0.1 sabagh.site www.sabagh.site laravel.exercise
+```
+
 ### Enable Site
 
 ```bash
