@@ -19,6 +19,10 @@ Install and configure PHP-FPM with Apache and MySQL on Debian for local developm
     - [Disable mod_php](#disable-mod-php)
     - [Enable Required Apache Modules](#enable-required-apache-modules)
     - [Enable PHP-FPM Configuration](#enable-php-fpm-configuration)
+    - [Install Laravel Application](#install-laravel-application)
+    - [Generate Symbolic Link on Apache Document Root](#generate-symbolic-link-on-apache-document-root)
+    - [Add Laravel Virtual Host](#add-laravel-virtual-host)
+    - [Enable site](#enable-site)
     - [Restart Apache](#restart-apache)
 
 ---
@@ -110,6 +114,45 @@ sudo a2enmod proxy_fcgi setenvif
 
 ```bash
 sudo a2enconf php8.3-fpm
+```
+
+### Install Laravel Application
+
+```bash
+mkdir www && cd www
+laravel new laravel.exercise
+```
+
+### Generate Symbolic Link on Apache Document Root
+
+```bash
+sudo ln -s ~/www/laravel.exercise /var/www/laravel.exercise
+```
+
+### Add Laravel Virtual Host
+
+Generate sample Laravel virtual host `laravel.exercise.conf`
+
+```bash
+<VirtualHost *:80>
+    ServerAdmin info@laravel.exercise
+    ServerName laravel.exercise
+    DocumentRoot /var/www/laravel.exercise/public
+
+    <Directory /var/www/laravel.exercise>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+### Enable Site
+
+```bash
+sudo a2ensite laravel.exercise.conf
 ```
 
 ### Restart Apache
