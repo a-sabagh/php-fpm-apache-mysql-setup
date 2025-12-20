@@ -142,6 +142,7 @@ Generate sample Laravel virtual host `laravel.exercise.conf`
     <Directory /var/www/laravel.exercise>
         AllowOverride All
         Require all granted
+        Options FollowSymLinks
     </Directory>
 
     ErrorLog ${APACHE_LOG_DIR}/error.log
