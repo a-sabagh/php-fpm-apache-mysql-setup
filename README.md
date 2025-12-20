@@ -133,7 +133,7 @@ sudo ln -s ~/www/laravel.exercise /var/www/laravel.exercise
 
 Generate sample Laravel virtual host `laravel.exercise.conf`
 
-```bash
+```apacheconf
 <VirtualHost *:80>
     ServerAdmin info@laravel.exercise
     ServerName laravel.exercise
