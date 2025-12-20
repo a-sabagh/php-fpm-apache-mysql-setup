@@ -12,6 +12,8 @@ Install and configure PHP-FPM with Apache and MySQL on Debian for local developm
 
 - [PHP-FPM + Apache + MySQL Setup](#php-fpm--apache--mysql-setup)
   - [Server Requirements](#server-requirements)
+  - [Download and Install Composer Globally](#download-and-install-composer-globally)
+  - [Install Laravel Installer](#install-laravel-installer)
   - [MySQL Database](#mysql-database)
   - [Apache Server Installation](#apache-server-installation)
     - [Disable mod_php](#disable-mod-php)
