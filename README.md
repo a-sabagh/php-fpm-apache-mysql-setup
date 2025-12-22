@@ -20,7 +20,6 @@ Install and configure PHP-FPM with Apache and MySQL on Debian for local developm
     - [Enable Required Apache Modules](#enable-required-apache-modules)
     - [Enable PHP-FPM Configuration](#enable-php-fpm-configuration)
     - [Install Laravel Application](#install-laravel-application)
-    - [Generate Symbolic Link on Apache Document Root](#generate-symbolic-link-on-apache-document-root)
     - [Add Laravel Virtual Host](#add-laravel-virtual-host)
     - [Enable site](#enable-site)
     - [Restart Apache](#restart-apache)
@@ -119,27 +118,24 @@ sudo a2enconf php8.3-fpm
 ### Install Laravel Application
 
 ```bash
-mkdir www && cd www
-laravel new laravel.exercise
-```
+laravel new laravel.site
 
-### Generate Symbolic Link on Apache Document Root
+sudo mv ~/www/laravel.site /var/www/laravel.site
 
-```bash
-sudo ln -s ~/www/laravel.exercise /var/www/laravel.exercise
+sudo chown -R www-data:www-data /var/www/laravel.site/storage/ /var/www/laravel.site/bootstrap/cache
 ```
 
 ### Add Laravel Virtual Host
 
-Generate sample Laravel virtual host `laravel.exercise.conf`
+Generate sample Laravel virtual host `laravel.site.conf`
 
 ```apacheconf
 <VirtualHost *:80>
-    ServerAdmin info@laravel.exercise
-    ServerName laravel.exercise
-    DocumentRoot /var/www/laravel.exercise/public
+    ServerAdmin info@laravel.site
+    ServerName laravel.site
+    DocumentRoot /var/www/laravel.site/public
 
-    <Directory /var/www/laravel.exercise>
+    <Directory /var/www/laravel.site>
         AllowOverride All
         Require all granted
         Options FollowSymLinks
@@ -153,13 +149,13 @@ Generate sample Laravel virtual host `laravel.exercise.conf`
 ### Update Hosts
 
 ```bash
-127.0.0.1 sabagh.site www.sabagh.site laravel.exercise
+127.0.0.1 laravel.site
 ```
 
 ### Enable Site
 
 ```bash
-sudo a2ensite laravel.exercise.conf
+sudo a2ensite laravel.site.conf
 ```
 
 ### Restart Apache
