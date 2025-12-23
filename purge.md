@@ -18,7 +18,7 @@ sudo apt install php php-fpm php-mbstring php-xml php-mysql php-curl php-zip php
 
 ```bash
 sudo systemctl stop mysql
-sudo apt purge -y mysql-server
+sudo apt purge -y mysql-*
 ```
 
 ### Remove configuration files
