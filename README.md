@@ -96,6 +96,12 @@ Install Apache:
 ```bash
 sudo apt install apache2 -y
 ```
+### Install Apache Integeration for PHP
+
+```bash
+sudo apt install -y libapache2-mod-fcgid
+sudo apt install -y libapache2-mod-php
+```
 
 ### Disable mod_php
 
