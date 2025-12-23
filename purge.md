@@ -48,7 +48,7 @@ rm -rf ~/.local/share/composer
 ```bash
 sudo systemctl stop apache2
 sudo systemctl disable apache2
-sudo apt purge -y apache2
+sudo apt purge -y apache2*
 ```
 
 ### Remove all Apache configuration, sites & logs
@@ -58,4 +58,11 @@ sudo rm -rf /etc/apache2
 sudo rm -rf /var/www
 sudo rm -rf /var/log/apache2
 sudo rm -rf /var/run/apache2
+```
+
+## Auto Remove
+
+```bash
+sudo apt autoremove -y --purge
+sudo apt autoclean -y
 ```
