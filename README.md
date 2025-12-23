@@ -163,6 +163,12 @@ Generate sample Laravel virtual host `laravel.site.conf`
 ```bash
 sudo a2ensite laravel.site.conf
 ```
+### Active Rewirte Module
+
+Activate the rewrite module to enable Laravel to support clean URLs.
+```bash
+sudo a2enmod rewrite
+```
 
 ### Restart Apache
 
