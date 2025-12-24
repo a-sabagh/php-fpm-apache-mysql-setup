@@ -128,7 +128,7 @@ laravel new laravel.site
 
 sudo mv ~/www/laravel.site /var/www/laravel.site
 
-sudo chown -R www-data:www-data /var/www/laravel.site/storage/ /var/www/laravel.site/bootstrap/cache
+sudo chown -R www-data:www-data /var/www/laravel.site/storage/ /var/www/laravel.site/bootstrap/cache /var/www/laravel.site/vendor
 
 sudo find storage bootstrap/cache -type d -exec chmod g+s {} \;
 
