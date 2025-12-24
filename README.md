@@ -132,7 +132,7 @@ sudo mv ~/www/laravel.site /var/www/laravel.site
 Change directory to /var/www/laravel.site change priviledges
 
 ```bash
-sudo chown 777 storage bootstrap/cache
+sudo chmod 777 storage bootstrap/cache
 ```
 
 ### Add Laravel Virtual Host
