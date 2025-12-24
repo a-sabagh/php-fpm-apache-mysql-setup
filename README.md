@@ -127,14 +127,18 @@ sudo a2enconf php8.3-fpm # phpx.x based on your distro
 laravel new laravel.site
 
 sudo mv ~/www/laravel.site /var/www/laravel.site
+```
 
-sudo chown -R www-data:www-data /var/www/laravel.site/storage/ /var/www/laravel.site/bootstrap/cache /var/www/laravel.site/vendor
+Change directory to /var/www/laravel.site change priviledges
 
-sudo find storage bootstrap/cache -type d -exec chmod g+s {} \;
+```bash
+sudo chown -R www-data:www-data storage vendor
 
-sudo find storage bootstrap/cache -type f -exec chmod 664 {} \;
+sudo find storage bootstrap/cache vendor -type d -exec chmod g+s {} \;
 
-sudo find storage bootstrap/cache -type d -exec chmod g+s {} \;
+sudo find storage bootstrap/cache vendor -type f -exec chmod 664 {} \;
+
+sudo find storage bootstrap/cache vendor -type d -exec chmod g+s {} \;
 ```
 
 ### Add Laravel Virtual Host
