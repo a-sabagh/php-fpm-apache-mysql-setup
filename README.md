@@ -134,6 +134,9 @@ Change directory to /var/www/laravel.site change priviledges
 ```bash
 sudo chmod 777 storage bootstrap/cache
 ```
+> ⛔⚠️ **Danger**
+>  
+> This Configuration is just for local development environment!
 
 ### Add Laravel Virtual Host
 
