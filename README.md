@@ -106,7 +106,7 @@ sudo apt install -y libapache2-mod-php
 ### Disable mod_php
 
 ```bash
-sudo a2dismod php8.3
+sudo a2dismod php
 ```
 
 ### Enable Required Apache Modules
@@ -118,7 +118,7 @@ sudo a2enmod proxy_fcgi setenvif
 ### Enable PHP-FPM Configuration
 
 ```bash
-sudo a2enconf php8.3-fpm
+sudo a2enconf php-fpm
 ```
 
 ### Install Laravel Application
