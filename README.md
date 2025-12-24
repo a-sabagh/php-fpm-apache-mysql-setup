@@ -106,7 +106,7 @@ sudo apt install -y libapache2-mod-php
 ### Disable mod_php
 
 ```bash
-sudo a2dismod php5.3 # phpx.x based on your distro
+sudo a2dismod php8.3 # phpx.x based on your distro
 ```
 
 ### Enable Required Apache Modules
