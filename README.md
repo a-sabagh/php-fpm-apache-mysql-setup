@@ -121,6 +121,12 @@ sudo a2enmod proxy_fcgi setenvif
 sudo a2enconf php8.3-fpm # phpx.x based on your distro
 ```
 
+### Set Propert Owner
+
+```bash
+sudo chown -R www-data:www-data /var/www/
+```
+
 ### Install Laravel Application
 
 ```bash
@@ -129,7 +135,7 @@ laravel new laravel.site
 sudo mv ~/www/laravel.site /var/www/laravel.site
 ```
 
-Change directory to /var/www/laravel.site change priviledges
+### ACLs: proper priviledge for all files and directories
 
 ```bash
 sudo chown -R www-data:www-data storage bootstrap/cache
