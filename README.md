@@ -32,7 +32,7 @@ The Laravel framework has a few system requirements.
 Ensure that your server has the required PHP version and extensions installed.
 
 ```bash
-sudo apt install php php-fpm php-mbstring php-xml php-mysql php-curl php-zip php-bcmath php-intl -y
+sudo apt install php php-fpm php-mbstring php-xml php-mysql php-curl php-zip php-bcmath php-intl php-gd -y
 ```
 ## Download and Install Composer Globally
 
